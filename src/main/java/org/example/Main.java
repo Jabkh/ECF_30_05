@@ -14,7 +14,9 @@ import org.example.IHM;
 
 
 public class Main {
-    public static void main(String[] args) {
-
-    }
+//    public static void main(String[] args) {
+////        IHM ihm;
+////        ihm = new IHM();
+////        ihm.start();
+//    }
 }

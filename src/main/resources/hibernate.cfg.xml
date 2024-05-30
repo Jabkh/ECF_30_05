@@ -21,7 +21,7 @@
         <property name="hibernate.show_sql">false</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- Mention annotated classes -->
         <mapping class="org.example.entities.Article"/>

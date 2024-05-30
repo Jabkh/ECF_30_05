@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -151,11 +152,13 @@ public class IHM {
             System.out.println("Gestion des ventes:");
             System.out.println("1. Enregistrer une vente");
             System.out.println("2. Consulter les ventes");
-            System.out.println("3. Consulter le nombre de ventes finalisées");
-            System.out.println("4. Consulter les ventes par catégorie");
-            System.out.println("5. Consulter les ventes entre deux dates");
-            System.out.println("6. Consulter les ventes par l'id du client");
-            System.out.println("7. Retour");
+            System.out.println("3. Mettre à jour le statut de la vente");
+            System.out.println("4. Générer un reçu de vente");
+            System.out.println("5. Consulter le nombre de ventes finalisées");
+            System.out.println("6. Consulter les ventes par catégorie");
+            System.out.println("7. Consulter les ventes entre deux dates");
+            System.out.println("8. Consulter les ventes par l'id du client");
+            System.out.println("9. Retour");
             System.out.print("Choisissez une option: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -407,6 +410,7 @@ public class IHM {
             Vente vente = Vente.builder()
                     .statut(Statut.EN_COURS)
                     .dateAchat(new Date())
+                    .articles(new ArrayList<>())
                     .client(client)
                     .build();
 
@@ -418,7 +422,7 @@ public class IHM {
                 Article article = session.get(Article.class, articleId);
 
                 if (article != null) {
-                    vente.getArticles().add(article);
+                    vente.addArticle(article);
                 } else {
                     System.out.println("Article non trouvé.");
                 }
@@ -435,6 +439,7 @@ public class IHM {
             e.printStackTrace();
         }
     }
+
 
     private static void consulterVentes() {
         try (Session session = sessionFactory.openSession()) {

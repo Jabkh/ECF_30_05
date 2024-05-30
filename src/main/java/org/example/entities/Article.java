@@ -21,7 +21,7 @@ public class Article {
     private int id;
 
     private String description;
-
+    @Enumerated(EnumType.STRING)
     private Categorie categorie;
 
     private double prix;
@@ -34,13 +34,13 @@ public class Article {
     @JoinColumn(name = "id_vente")
     private Vente vente;
 
-    @ManyToMany(mappedBy = "articles", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "articles", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Vente> ventes;
 
     // Méthode pour ajouter une vente à la liste des ventes de l'article
     public void addVente(Vente vente) {
         ventes.add(vente);
-        vente.getArticles().add(this); // Ajouter cet article à la liste des articles de la vente
+        vente.getArticles().add(this);
     }
 }
 

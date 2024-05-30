@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,9 +29,9 @@ public class Vente {
     @Temporal(TemporalType.DATE)
     private Date dateAchat;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "vente_article",
-            joinColumns = @JoinColumn(name = "id_vente"),
+            joinColumns = @JoinColumn(name = "vente_id"),
             inverseJoinColumns = @JoinColumn(name = "article_id"))
     private List<Article> articles;
 
@@ -41,7 +42,7 @@ public class Vente {
     // Méthode pour ajouter un article à la liste des articles de la vente
     public void addArticle(Article article) {
         articles.add(article);
-        article.getVentes().add(this); // Ajouter cette vente à la liste des ventes de l'article
+        article.getVentes().add(this);
     }
 }
 
