@@ -1,0 +1,48 @@
+Gestionnaire d'un magasin de vetements
+
+Le client veut pouvoir Suivre son iventaire avec un CRUD
+
+Gerer les ventes 
+
+Tenir à jour les Infos Clients
+
+1- L'inventaire doit avoir un ihm permettant l'utilisation du CRUD
+
+Il y aura l'entité Article avec les attributs suivants:
+
+id 
+description 
+catégorie (enum)
+taille
+prix
+quantite
+
+2-Les ventes 
+
+requetes de création et de récupération, supression et modification
+
+
+3- Gestion des clients 
+
+Ihm pour gérer le CRUD Client
+
+pour le client il y aura 
+id
+nom
+email
+une clé one to many avec la table achats
+achat
+aura
+id 
+description
+
+4-Rapports et analyse
+
+Faire des requetes qui permettront de récupérer le stock dispo en verifiant la quantité
+requete permettant d'avoir le nombre de ventes finalsées.
+requete permettant d'avoir les produits les plus vendus.
+requete permettant de récupérer les ventes par catégorie
+requete permettant de récupérer les ventes entre deux date données
+requete permettant de récupérer les ventes avec un id client
+
+utilisation des requetes nommée ou positionnée.
